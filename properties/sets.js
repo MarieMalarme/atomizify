@@ -2,8 +2,8 @@ import { assign } from '../functions/toolbox.js'
 
 import { dimensions } from './layout/dimensions.js'
 import { displaying } from './layout/displaying.js'
+import { flexbox } from './layout/flexbox.js'
 // import { spacing } from './layout/spacing.js'
-// import { flexbox } from './layout/flexbox.js'
 
 // import { skinning } from './layout/skinning.js'
 // import { background } from './layout/background.js'
@@ -18,8 +18,8 @@ import { displaying } from './layout/displaying.js'
 const layout = assign({
   dimensions,
   displaying,
+  flexbox,
   // spacing,
-  // flexbox,
 })
 
 const theming = assign({
