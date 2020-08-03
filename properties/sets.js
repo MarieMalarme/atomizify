@@ -1,6 +1,6 @@
 import { assign } from '../functions/toolbox.js'
 
-// import { dimensions } from './layout/dimensions.js'
+import { dimensions } from './layout/dimensions.js'
 // import { spacing } from './layout/spacing.js'
 // import { flexbox } from './layout/flexbox.js'
 // import { displaying } from './layout/displaying.js'
@@ -16,7 +16,7 @@ import { assign } from '../functions/toolbox.js'
 // import { events } from './layout/events.js'
 
 const layout = assign({
-  // dimensions,
+  dimensions,
   // spacing,
   // flexbox,
   // displaying
