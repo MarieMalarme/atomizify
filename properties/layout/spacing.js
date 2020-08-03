@@ -1,16 +1,14 @@
-// export const spacing = {
-//   margin,
-//   margin_top,
-//   margin_right,
-//   margin_bottom,
-//   margin_left,
-//   margin_horizontal,
-//   margin_vertical,
-//   padding,
-//   padding_top,
-//   padding_right,
-//   padding_bottom,
-//   padding_left,
-//   padding_horizontal,
-//   padding_vertical,
-// }
+import { to_pixel } from '../../functions/measures.js'
+
+const margin = {
+  ...to_pixel('margin', { axes: true }),
+}
+
+const padding = {
+  ...to_pixel('padding', { axes: true }),
+}
+
+export const spacing = {
+  margin,
+  padding,
+}
