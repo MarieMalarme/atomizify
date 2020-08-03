@@ -5,15 +5,15 @@ import { displaying } from './layout/displaying.js'
 import { flexbox } from './layout/flexbox.js'
 import { spacing } from './layout/spacing.js'
 
-// import { skinning } from './layout/skinning.js'
-// import { background } from './layout/background.js'
-// import { border } from './layout/border.js'
+// import { skinning } from './theming/skinning.js'
+// import { background } from './theming/background.js'
+// import { border } from './theming/border.js'
 
-// import { font } from './layout/font.js'
-// import { paragraph } from './layout/paragraph.js'
+// import { font } from './text/font.js'
+// import { paragraph } from './text/paragraph.js'
 
-// import { animation } from './layout/animation.js'
-// import { events } from './layout/events.js'
+// import { animation } from './interaction/animation.js'
+// import { events } from './interaction/events.js'
 
 const layout = assign({
   dimensions,
