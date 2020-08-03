@@ -1,0 +1,16 @@
+// export const spacing = {
+//   margin,
+//   margin_top,
+//   margin_right,
+//   margin_bottom,
+//   margin_left,
+//   margin_horizontal,
+//   margin_vertical,
+//   padding,
+//   padding_top,
+//   padding_right,
+//   padding_bottom,
+//   padding_left,
+//   padding_horizontal,
+//   padding_vertical,
+// }
