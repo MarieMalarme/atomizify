@@ -1,34 +1,11 @@
-import { assign_map, array, shorten } from '../../functions/toolbox.js'
+import {
+  assign_map,
+  array,
+  shorten,
+  shorten_if_dash,
+} from '../../functions/toolbox.js'
 
-const flex = assign_map(array(11), (value) => ({
-  [`flex${value}`]: `flex: ${value}`,
-}))
-
-const flex_direction_values = ['row', 'row-reverse', 'column', 'column-reverse']
-const flex_direction = assign_map(flex_direction_values, (value) => {
-  const suffix = (value.includes('-') && shorten(value)) || value
-  return {
-    [`flex-${suffix}`]: `flex-direction: ${value}`,
-  }
-})
-
-const flex_grow = assign_map(array(11), (value) => ({
-  [`flex-grow${value}`]: `flex-grow: ${value}`,
-}))
-
-const flex_shrink = assign_map(array(11), (value) => ({
-  [`flex-shrink${value}`]: `flex-shrink: ${value}`,
-}))
-
-const flex_wrap_values = ['wrap', 'nowrap', 'wrap-reverse']
-const flex_wrap = assign_map(flex_wrap_values, (value) => {
-  const suffix = (value.includes('-') && shorten(value)) || value
-  return {
-    [`flex-${suffix}`]: `flex-wrap: ${value}`,
-  }
-})
-
-const flex_axis_values = {
+const flex_axis = {
   base: [
     'start',
     'end',
@@ -43,53 +20,22 @@ const flex_axis_values = {
   selfs: ['self-start', 'self-end'],
   sides: ['left', 'right'],
 }
-const { base, space, selfs, sides } = flex_axis_values
 
-const align_content_values = [...base, ...space]
-const align_content = assign_map(align_content_values, (value) => ({
-  [`ac-${value}`]: `align-content: ${value}`,
-}))
+const { base, space, selfs, sides } = flex_axis
 
-const align_items_values = [...base, ...selfs]
-const align_items = assign_map(align_items_values, (value) => ({
-  [`ai-${value}`]: `align-items: ${value}`,
-}))
+const props_values = {
+  flex_direction: ['row', 'row-reverse', 'column', 'column-reverse'],
+  flex_wrap: ['wrap', 'nowrap', 'wrap-reverse'],
+  align_content: [...base, ...space],
+  align_items: [...base, ...selfs],
+  align_self: [...base, ...selfs],
+  justify_content: [...base, ...space, ...sides],
+  justify_items: [...base, ...selfs, ...sides],
+  justify_self: [...base, ...selfs, ...sides],
+}
 
-const align_self_values = [...base, ...selfs]
-const align_self = assign_map(align_self_values, (value) => ({
-  [`as-${value}`]: `align-self: ${value}`,
-}))
-
-const justify_content_values = [...base, ...space, ...sides]
-const justify_content = assign_map(justify_content_values, (value) => ({
-  [`jc-${value}`]: `justify-content: ${value}`,
-}))
-
-const justify_items_values = [...base, ...selfs, ...sides]
-const justify_items = assign_map(justify_items_values, (value) => ({
-  [`ji-${value}`]: `justify-items: ${value}`,
-}))
-
-const justify_self_values = [...base, ...selfs, ...sides]
-const justify_self = assign_map(justify_self_values, (value) => ({
-  [`js-${value}`]: `justify-self: ${value}`,
-}))
-
-let count = -10
-const order = assign_map(array(21), () => {
-  const value = count
-  const suffix = (value < 0 && `-min${Math.abs(value)}`) || value
-  count++
-  return {
-    [`order${suffix}`]: `order: ${value}`,
-  }
-})
-
-export const flexbox = {
-  flex,
+const {
   flex_direction,
-  flex_grow,
-  flex_shrink,
   flex_wrap,
   align_content,
   align_items,
@@ -97,5 +43,67 @@ export const flexbox = {
   justify_content,
   justify_items,
   justify_self,
-  order,
+} = props_values
+
+let order = -10
+
+export const flexbox = {
+  flex: assign_map(11, (value) => ({
+    [`flex${value}`]: `flex: ${value}`,
+  })),
+
+  flex_direction: assign_map(flex_direction, (value) => {
+    const suffix = shorten_if_dash(value)
+    return {
+      [`flex-${suffix}`]: `flex-direction: ${value}`,
+    }
+  }),
+
+  flex_grow: assign_map(11, (value) => ({
+    [`flex-grow${value}`]: `flex-grow: ${value}`,
+  })),
+
+  flex_shrink: assign_map(11, (value) => ({
+    [`flex-shrink${value}`]: `flex-shrink: ${value}`,
+  })),
+
+  flex_wrap: assign_map(flex_wrap, (value) => {
+    const suffix = shorten_if_dash(value)
+    return {
+      [`flex-${suffix}`]: `flex-wrap: ${value}`,
+    }
+  }),
+
+  align_content: assign_map(align_content, (value) => ({
+    [`ac-${value}`]: `align-content: ${value}`,
+  })),
+
+  align_items: assign_map(align_items, (value) => ({
+    [`ai-${value}`]: `align-items: ${value}`,
+  })),
+
+  align_self: assign_map(align_self, (value) => ({
+    [`as-${value}`]: `align-self: ${value}`,
+  })),
+
+  justify_content: assign_map(justify_content, (value) => ({
+    [`jc-${value}`]: `justify-content: ${value}`,
+  })),
+
+  justify_items: assign_map(justify_items, (value) => ({
+    [`ji-${value}`]: `justify-items: ${value}`,
+  })),
+
+  justify_self: assign_map(justify_self, (value) => ({
+    [`js-${value}`]: `justify-self: ${value}`,
+  })),
+
+  order: assign_map(21, () => {
+    const value = order
+    const suffix = (value < 0 && `-min${Math.abs(value)}`) || value
+    order++
+    return {
+      [`order${suffix}`]: `order: ${value}`,
+    }
+  }),
 }
