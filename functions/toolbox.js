@@ -1,6 +1,9 @@
 export const array = (number) => [...Array(number).keys()]
 
-export const assign_map = (data, mapper) => Object.assign(...data.map(mapper))
+export const assign_map = (data, mapper) => {
+  const data_array = (Array.isArray(data) && data) || array(data)
+  return Object.assign(...data_array.map(mapper))
+}
 
 export const assign_values = (object) => ({
   ...Object.assign({}, ...Object.values(object)),
