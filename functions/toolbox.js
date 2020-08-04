@@ -22,6 +22,9 @@ export const shorten = (string) => {
   return string.slice(0, dash_index + 2)
 }
 
+export const shorten_if_dash = (value) =>
+  value.includes('-') ? shorten(value) : value
+
 export const split_colon = (string) => string.split(':')[0]
 
 export const dash_to_snake = (string) => string.split('-').join('_')
