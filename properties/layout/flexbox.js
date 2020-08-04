@@ -5,34 +5,7 @@ import {
   shorten_if_dash,
 } from '../../functions/toolbox.js'
 
-const flex_axis = {
-  base: [
-    'start',
-    'end',
-    'flex-start',
-    'flex-end',
-    'center',
-    'normal',
-    'baseline',
-    'stretch',
-  ],
-  space: ['space-between', 'space-around', 'space-evenly'],
-  selfs: ['self-start', 'self-end'],
-  sides: ['left', 'right'],
-}
-
-const { base, space, selfs, sides } = flex_axis
-
-const props_values = {
-  flex_direction: ['row', 'row-reverse', 'column', 'column-reverse'],
-  flex_wrap: ['wrap', 'nowrap', 'wrap-reverse'],
-  align_content: [...base, ...space],
-  align_items: [...base, ...selfs],
-  align_self: [...base, ...selfs],
-  justify_content: [...base, ...space, ...sides],
-  justify_items: [...base, ...selfs, ...sides],
-  justify_self: [...base, ...selfs, ...sides],
-}
+import { layout_values } from './_values.js'
 
 const {
   flex_direction,
@@ -43,7 +16,7 @@ const {
   justify_content,
   justify_items,
   justify_self,
-} = props_values
+} = layout_values
 
 let order = -10
 

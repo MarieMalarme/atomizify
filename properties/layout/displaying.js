@@ -1,12 +1,5 @@
 import { assign_map } from '../../functions/toolbox.js'
-
-const props_values = {
-  display: ['none', 'block', 'inline', 'table', 'flex', 'grid'],
-  visibility: ['visible', 'hidden', 'collapse'],
-  box_sizing: ['content', 'border'],
-  object_fit: ['contain', 'cover', 'fill', 'none', 'scale-down'],
-  object_position: ['top', 'right', 'bottom', 'left', 'center'],
-}
+import { layout_values } from './_values.js'
 
 const {
   display,
@@ -14,7 +7,7 @@ const {
   box_sizing,
   object_fit,
   object_position,
-} = props_values
+} = layout_values
 
 export const displaying = {
   display: assign_map(display, (value) => ({
