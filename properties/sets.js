@@ -6,7 +6,7 @@ import { flexbox } from './layout/flexbox.js'
 import { spacing } from './layout/spacing.js'
 
 import { skinning } from './theming/skinning.js'
-// import { background } from './theming/background.js'
+import { background } from './theming/background.js'
 // import { border } from './theming/border.js'
 
 // import { font } from './text/font.js'
@@ -24,7 +24,7 @@ const layout = assign({
 
 const theming = assign({
   skinning,
-  // background,
+  background,
   // border,
 })
 
