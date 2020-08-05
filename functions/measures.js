@@ -1,6 +1,6 @@
 import { assign_map, shorten } from './toolbox.js'
 import { pixels, percentages } from '../variables/measures.js'
-import { directions } from '../variables/directions.js'
+import { directions } from '../variables/orientations.js'
 
 export const to_pixel = (selector, { axes } = false) => {
   const prefix = shorten(selector)

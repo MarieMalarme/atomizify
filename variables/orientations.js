@@ -7,3 +7,5 @@ export const directions = entries({
   b: '-bottom',
   l: '-left',
 })
+
+export const positions = ['top', 'right', 'bottom', 'left', 'center']
