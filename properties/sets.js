@@ -7,7 +7,7 @@ import { spacing } from './layout/spacing.js'
 
 import { skinning } from './theming/skinning.js'
 import { background } from './theming/background.js'
-// import { border } from './theming/border.js'
+import { border } from './theming/border.js'
 
 // import { font } from './text/font.js'
 // import { paragraph } from './text/paragraph.js'
@@ -25,7 +25,7 @@ const layout = assign({
 const theming = assign({
   skinning,
   background,
-  // border,
+  border,
 })
 
 const text = assign({
