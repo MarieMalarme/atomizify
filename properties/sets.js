@@ -9,7 +9,7 @@ import { skinning } from './theming/skinning.js'
 import { background } from './theming/background.js'
 import { border } from './theming/border.js'
 
-// import { font } from './text/font.js'
+import { font } from './text/font.js'
 // import { paragraph } from './text/paragraph.js'
 
 // import { animation } from './interaction/animation.js'
@@ -29,7 +29,7 @@ const theming = assign({
 })
 
 const text = assign({
-  // font,
+  font,
   // paragraph,
 })
 
