@@ -49,4 +49,14 @@ export const theming_values = {
     no: 'no-repeat',
   }),
   background_size: ['cover', 'contain', 'auto'],
+  border_style: [
+    'dotted',
+    'dashed',
+    'solid',
+    'double',
+    'groove',
+    'ridge',
+    'inset',
+    'outset',
+  ],
 }

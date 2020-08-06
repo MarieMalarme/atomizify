@@ -1,6 +1,9 @@
 import { assign_map } from '../../functions/toolbox.js'
 import { directions } from '../../variables/orientations.js'
 import { colors } from '../../variables/colors.js'
+import { theming_values } from './_values.js'
+
+const { border_style } = theming_values
 
 export const border = {
   border: {
@@ -22,6 +25,10 @@ export const border = {
     })),
     br50p: `border-radius: 50%`,
   },
+
+  border_style: assign_map(border_style, (value) => ({
+    [`b-${value}`]: `border-style: ${value}`,
+  })),
 
   border_width: assign_map(21, (i) => ({
     [`bw${i}`]: `border-width: ${i}px`,
