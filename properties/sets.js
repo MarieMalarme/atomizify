@@ -10,7 +10,7 @@ import { background } from './theming/background.js'
 import { border } from './theming/border.js'
 
 import { font } from './text/font.js'
-// import { paragraph } from './text/paragraph.js'
+import { paragraph } from './text/paragraph.js'
 
 // import { animation } from './interaction/animation.js'
 // import { events } from './interaction/events.js'
@@ -30,7 +30,7 @@ const theming = assign({
 
 const text = assign({
   font,
-  // paragraph,
+  paragraph,
 })
 
 const interaction = assign({
