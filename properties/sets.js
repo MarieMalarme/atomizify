@@ -13,7 +13,7 @@ import { font } from './text/font.js'
 import { paragraph } from './text/paragraph.js'
 
 import { animation } from './interaction/animation.js'
-// import { events } from './interaction/events.js'
+import { events } from './interaction/events.js'
 
 const layout = assign({
   dimensions,
@@ -35,7 +35,7 @@ const text = assign({
 
 const interaction = assign({
   animation,
-  // events,
+  events,
 })
 
 export const base_sets = assign({ layout, theming, text, interaction })
