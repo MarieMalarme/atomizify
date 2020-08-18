@@ -12,7 +12,7 @@ import { border } from './theming/border.js'
 import { font } from './text/font.js'
 import { paragraph } from './text/paragraph.js'
 
-// import { animation } from './interaction/animation.js'
+import { animation } from './interaction/animation.js'
 // import { events } from './interaction/events.js'
 
 const layout = assign({
@@ -34,7 +34,7 @@ const text = assign({
 })
 
 const interaction = assign({
-  // animation,
+  animation,
   // events,
 })
 
