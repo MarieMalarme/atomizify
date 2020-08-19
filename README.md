@@ -1,8 +1,8 @@
-#atomify
+# atomify
 
 ## What
 
-`atomify` is a JavaScript library generating ⚛ atomic ⚛ CSS classes and variables.
+`atomify` is a JavaScript library generating atomic CSS classes and variables.
 
 `atomify` can fit all types of developers: for lazy ones, it offers a bunch of predefined items, but if you're a custom-freak you can also create and add your own classes!
 

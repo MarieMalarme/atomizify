@@ -1,0 +1,27 @@
+{
+  "name": "atomify",
+  "version": "1.0.0",
+  "description": "A JavaScript library generating atomic CSS classes and variables",
+  "main": "index.js",
+  "module": "index.js",
+  "devDependencies": {
+    "dallas": "3.1.1"
+  },
+  "keywords": [
+    "javascript",
+    "classes",
+    "css",
+    "atomic",
+    "flags"
+  ],
+  "author": "MarieMalarme",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarieMalarme/atomify.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MarieMalarme/atomify/issues"
+  },
+  "homepage": "https://github.com/MarieMalarme/atomify#readme"
+}
