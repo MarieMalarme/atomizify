@@ -1,6 +1,7 @@
 import {
   assign_values,
   dash_to_snake,
+  dash_to_camel,
   from_entries,
   entries,
 } from './functions/toolbox.js'
@@ -36,11 +37,15 @@ export const generate_css = ({ filters = {}, typecase = 'snake' } = {}) => {
   const filtered_props = filter_object(filtered_subsets, props)
   const filtered_classes = assign_values(filtered_props)
 
+  const camel_case = typecase === 'camel'
   const dash_case = typecase === 'dash'
 
   classes = from_entries(
     entries(filtered_classes).map(([key, value]) => {
-      const formatted_key = (dash_case && key) || dash_to_snake(key)
+      const formatted_key =
+        (dash_case && key) ||
+        (camel_case && dash_to_camel(key)) ||
+        dash_to_snake(key)
       return [formatted_key, value]
     }),
   )

@@ -28,3 +28,6 @@ export const shorten_if_dash = (value) =>
 export const split_colon = (string) => string.split(':')[0]
 
 export const dash_to_snake = (string) => string.split('-').join('_')
+
+export const dash_to_camel = (string) =>
+  string.replace(/-([a-z])/g, (pattern) => pattern[1].toUpperCase())
