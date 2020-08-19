@@ -14,15 +14,15 @@ import {
 
 import { base_sets } from './properties/sets.js'
 
-const filter_object = (object, filters, { is_base_object } = true) => {
-  const { type, names } = filters
-  const to_remove = type === 'to_remove'
+const filter_object = (object, filters, { is_base_object } = false) => {
+  const { to_remove, names } = filters
   object = is_base_object ? object : assign_values(object)
-
   if (!names) return object
+  const names_snake = names.map((n) => dash_to_snake(n))
+
   return from_entries(
     entries(object).filter(([key, value]) =>
-      to_remove ? !names.includes(key) : names.includes(key),
+      to_remove ? !names_snake.includes(key) : names_snake.includes(key),
     ),
   )
 }
@@ -39,13 +39,14 @@ export const generate_css = ({ filters = {}, typecase = 'snake' } = {}) => {
 
   const camel_case = typecase === 'camel'
   const dash_case = typecase === 'dash'
+  const snake_case = typecase === 'snake'
 
   classes = from_entries(
     entries(filtered_classes).map(([key, value]) => {
       const formatted_key =
         (dash_case && key) ||
         (camel_case && dash_to_camel(key)) ||
-        dash_to_snake(key)
+        (snake_case && dash_to_snake(key))
       return [formatted_key, value]
     }),
   )
