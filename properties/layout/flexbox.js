@@ -47,9 +47,13 @@ export const flexbox = {
     }
   }),
 
-  align_content: assign_map(align_content, (value) => ({
-    [`ac-${value}`]: `align-content: ${value}`,
-  })),
+  align_content: assign_map(align_content, (value) => {
+    const suffix =
+      (value.includes('space') && value.replace('space-', '')) || value
+    return {
+      [`ac-${suffix}`]: `align-content: ${value}`,
+    }
+  }),
 
   align_items: assign_map(align_items, (value) => ({
     [`ai-${value}`]: `align-items: ${value}`,
@@ -59,9 +63,13 @@ export const flexbox = {
     [`as-${value}`]: `align-self: ${value}`,
   })),
 
-  justify_content: assign_map(justify_content, (value) => ({
-    [`jc-${value}`]: `justify-content: ${value}`,
-  })),
+  justify_content: assign_map(justify_content, (value) => {
+    const suffix =
+      (value.includes('space') && value.replace('space-', '')) || value
+    return {
+      [`jc-${suffix}`]: `justify-content: ${value}`,
+    }
+  }),
 
   justify_items: assign_map(justify_items, (value) => ({
     [`ji-${value}`]: `justify-items: ${value}`,
