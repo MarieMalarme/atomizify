@@ -29,13 +29,13 @@ const filter_object = (object, filters, { is_base_object } = false) => {
 
 let classes = {}
 
-export const generate_css = ({ filters = {}, typecase = 'snake' } = {}) => {
+export const generate_css = ({ filters = {}, typecase, custom } = {}) => {
   const { sets = {}, subsets = {}, props = {} } = filters
 
   const filtered_sets = filter_object(base_sets, sets, { is_base_object: true })
   const filtered_subsets = filter_object(filtered_sets, subsets)
   const filtered_props = filter_object(filtered_subsets, props)
-  const filtered_classes = assign_values(filtered_props)
+  const filtered_classes = { ...assign_values(filtered_props), ...custom }
 
   const camel_case = typecase === 'camel'
   const dash_case = typecase === 'dash'
