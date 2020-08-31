@@ -37,16 +37,15 @@ export const generate_css = ({ filters = {}, typecase, custom } = {}) => {
   const filtered_props = filter_object(filtered_subsets, props)
   const filtered_classes = { ...assign_values(filtered_props), ...custom }
 
-  const camel_case = typecase === 'camel'
   const dash_case = typecase === 'dash'
-  const snake_case = typecase === 'snake'
+  const camel_case = typecase === 'camel'
 
   classes = from_entries(
     entries(filtered_classes).map(([key, value]) => {
       const formatted_key =
         (dash_case && key) ||
         (camel_case && dash_to_camel(key)) ||
-        (snake_case && dash_to_snake(key))
+        dash_to_snake(key)
       return [formatted_key, value]
     }),
   )
