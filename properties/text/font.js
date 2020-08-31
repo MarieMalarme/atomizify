@@ -15,9 +15,13 @@ export const font = {
   })),
 
   font_size: {
-    ...assign_map(26, (i) => ({
-      [`fs${i + 5}`]: `font-size: ${i + 5}px`,
-    })),
+    ...assign_map(38, (i) => {
+      const ten_interval = (i - 22) * 10
+      const number = (i > 25 && ten_interval) || i + 5
+      return {
+        [`fs${number}`]: `font-size: ${number}px`,
+      }
+    }),
     ...assign_map(font_size, ([size, value]) => ({
       [`fs-${size}`]: `font-size: ${value}`,
     })),
