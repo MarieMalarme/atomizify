@@ -15,9 +15,12 @@ export const border = {
     })),
   },
 
-  border_color: assign_map(colors, ([color]) => ({
-    [`b-${color}`]: `border-color: var(--${color})`,
-  })),
+  border_color: {
+    ...assign_map(colors, ([color]) => ({
+      [`b-${color}`]: `border-color: var(--${color})`,
+    })),
+    [`b-transparent`]: `border-color: transparent`,
+  },
 
   border_radius: {
     ...assign_map(26, (i) => ({

@@ -25,9 +25,13 @@ export const background = {
     [`bg-clip-${value}`]: `background-clip: ${value}${i ? '-box' : ''}`,
   })),
 
-  background_color: assign_map(colors, ([color]) => ({
-    [`bg-${color}`]: `background-color: var(--${color})`,
-  })),
+  background_color: {
+    ...assign_map(colors, ([color]) => ({
+      [`bg-${color}`]: `background-color: var(--${color})`,
+    })),
+    [`bg-transparent`]: `background: transparent`,
+    [`bg-none`]: `background: none`,
+  },
 
   background_origin: assign_map(background_origin, (value) => ({
     [`bg-origin-${value}`]: `background-origin: ${value}-box`,
