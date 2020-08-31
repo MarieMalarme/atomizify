@@ -26,7 +26,7 @@ export const border = {
     ...assign_map(26, (i) => ({
       [`b-rad${i}`]: `border-radius: ${i}px`,
     })),
-    br50p: `border-radius: 50%`,
+    [`b-rad50p`]: `border-radius: 50%`,
   },
 
   border_style: assign_map(border_style, (value) => ({
