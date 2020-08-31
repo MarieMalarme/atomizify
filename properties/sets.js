@@ -4,6 +4,7 @@ import { dimensions } from './layout/dimensions.js'
 import { displaying } from './layout/displaying.js'
 import { flexbox } from './layout/flexbox.js'
 import { spacing } from './layout/spacing.js'
+import { positioning } from './layout/positioning.js'
 
 import { skinning } from './theming/skinning.js'
 import { background } from './theming/background.js'
@@ -20,6 +21,7 @@ const layout = assign({
   displaying,
   flexbox,
   spacing,
+  positioning,
 })
 
 const theming = assign({

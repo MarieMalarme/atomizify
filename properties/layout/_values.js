@@ -32,4 +32,5 @@ export const layout_values = {
   justify_content: [...base, ...space, ...sides],
   justify_items: [...base, ...selfs, ...sides],
   justify_self: [...base, ...selfs, ...sides],
+  position: ['static', 'relative', 'absolute', 'fixed', 'sticky'],
 }
