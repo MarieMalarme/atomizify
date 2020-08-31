@@ -8,6 +8,7 @@ export const interaction_values = {
     'color',
     'width',
     'height',
+    'transform',
   ],
   overflow: ['visible', 'hidden', 'clip', 'scroll', 'auto'],
   overflow_wrap: ['normal', 'break-word', 'anywhere'],
