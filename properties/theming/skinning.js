@@ -14,8 +14,8 @@ export const skinning = {
     [`o${i * 5}`]: `opacity: ${(i * 5) / 100}`,
   })),
 
-  box_shadow: assign_map(box_shadow_sizes, ([prefix, { size, opacity }]) =>
-    assign_map(box_shadow, ([suffix, coords]) => ({
+  box_shadow: assign_map(box_shadow_sizes, ([suffix, { size, opacity }]) =>
+    assign_map(box_shadow, ([prefix, coords]) => ({
       [`shadow-${prefix}-${suffix}`]: `box-shadow: ${coords[0]}px ${coords[1]}px ${size}px hsla(0, 0%, 0%, 0.${opacity})`,
     })),
   ),

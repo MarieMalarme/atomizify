@@ -21,8 +21,8 @@ const {
 let order = -10
 
 export const flexbox = {
-  flex: assign_map(11, (value) => ({
-    [`flex${value}`]: `flex: ${value}`,
+  flex: assign_map(11, (i) => ({
+    [`flex${i}`]: `flex: ${i}`,
   })),
 
   flex_direction: assign_map(flex_direction, (value) => {
@@ -32,12 +32,12 @@ export const flexbox = {
     }
   }),
 
-  flex_grow: assign_map(11, (value) => ({
-    [`flex-grow${value}`]: `flex-grow: ${value}`,
+  flex_grow: assign_map(11, (i) => ({
+    [`flex-grow${i}`]: `flex-grow: ${i}`,
   })),
 
-  flex_shrink: assign_map(11, (value) => ({
-    [`flex-shrink${value}`]: `flex-shrink: ${value}`,
+  flex_shrink: assign_map(11, (i) => ({
+    [`flex-shrink${i}`]: `flex-shrink: ${i}`,
   })),
 
   flex_wrap: assign_map(flex_wrap, (value) => {
