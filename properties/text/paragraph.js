@@ -25,7 +25,7 @@ export const paragraph = {
   })),
 
   text_align: assign_map(text_align, (value) => ({
-    [`text-${shorten_if_dash(value)}`]: `text-direction: ${value}`,
+    [`text-${shorten_if_dash(value)}`]: `text-align: ${value}`,
   })),
 
   text_decoration: { [`text-dec-none`]: `text-decoration: none` },
@@ -68,7 +68,7 @@ export const paragraph = {
   })),
 
   text_transform: assign_map(text_transform, (value) => ({
-    [`${value}`]: `text-overflow: ${value}`,
+    [`${value}`]: `text-transform: ${value}`,
   })),
 
   line_height: {
