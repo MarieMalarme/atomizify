@@ -31,3 +31,16 @@ export const dash_to_snake = (string) => string.split('-').join('_')
 
 export const dash_to_camel = (string) =>
   string.replace(/-([a-z])/g, (pattern) => pattern[1].toUpperCase())
+
+export const filter_object = (object, filters, { is_base_object } = false) => {
+  const { to_remove, names } = filters
+  object = is_base_object ? object : assign_values(object)
+  if (!names) return object
+  const names_snake = names.map((n) => dash_to_snake(n))
+
+  return from_entries(
+    entries(object).filter(([key, value]) =>
+      to_remove ? !names_snake.includes(key) : names_snake.includes(key),
+    ),
+  )
+}

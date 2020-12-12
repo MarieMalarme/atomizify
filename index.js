@@ -1,41 +1,35 @@
 import {
+  filter_object,
   assign_values,
+  assign_map,
   dash_to_snake,
   dash_to_camel,
   from_entries,
   entries,
 } from './functions/toolbox.js'
 
-import { colors_variables } from './variables/colors.js'
 import {
   pixels_variables,
   percentages_variables,
 } from './variables/measures.js'
+import { colors_variables } from './variables/colors.js'
 
 import { base_sets } from './properties/sets.js'
 
-const filter_object = (object, filters, { is_base_object } = false) => {
-  const { to_remove, names } = filters
-  object = is_base_object ? object : assign_values(object)
-  if (!names) return object
-  const names_snake = names.map((n) => dash_to_snake(n))
-
-  return from_entries(
-    entries(object).filter(([key, value]) =>
-      to_remove ? !names_snake.includes(key) : names_snake.includes(key),
-    ),
-  )
-}
+import { no_flags, dallas_missing } from './messages.js'
 
 let classes = {}
 
-export const generate_css = ({ filters = {}, typecase, custom } = {}) => {
+export const atomify = ({ filters = {}, typecase, custom_classes } = {}) => {
   const { sets = {}, subsets = {}, props = {} } = filters
 
   const filtered_sets = filter_object(base_sets, sets, { is_base_object: true })
   const filtered_subsets = filter_object(filtered_sets, subsets)
   const filtered_props = filter_object(filtered_subsets, props)
-  const filtered_classes = { ...assign_values(filtered_props), ...custom }
+  const filtered_classes = {
+    ...assign_values(filtered_props),
+    ...custom_classes,
+  }
 
   const dash_case = typecase === 'dash'
   const camel_case = typecase === 'camel'
@@ -68,4 +62,31 @@ export const generate_css = ({ filters = {}, typecase, custom } = {}) => {
       ].join('\n'),
     }),
   )
+
+  return classes
+}
+
+export const flagify = () => {
+  const flags = Object.keys(classes)
+
+  try {
+    const dallas = require('dallas')
+    const { wrapper } = dallas
+
+    if (!flags) {
+      console.log(...no_flags)
+      return wrapper({ consume: true })
+    }
+
+    const flags_to_object = assign_map(flags, (flag) => ({ [flag]: flag }))
+
+    const Component = wrapper({ ...flags_to_object, consume: true })
+    const Div = Component.div()
+    const Span = Component.span()
+
+    return { Component, Div, Span, flags }
+  } catch (error) {
+    console.log(...dallas_missing)
+    console.log(error)
+  }
 }
