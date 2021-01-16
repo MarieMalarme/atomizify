@@ -9,33 +9,31 @@ import {
   entries,
 } from './functions/toolbox.js'
 
-import {
-  pixels_variables,
-  percentages_variables,
-} from './variables/measures.js'
-import { colors_variables } from './variables/colors.js'
-
+import { pixels_variables, percentages_variables } from './variables/measures.js'
+import { colors, colors_variables } from './variables/colors.js'
 import { base_sets } from './properties/sets.js'
 
 import { no_flags, dallas_missing } from './messages.js'
 
-let classes = {}
+let _classes = {}
+let _custom_classes = {}
+let _filtered_sets = {}
+let _typecase
 
-export const atomify = ({ filters = {}, typecase, custom_classes } = {}) => {
-  const { sets = {}, subsets = {}, props = {} } = filters
+export const atomify = ({ filters = {}, custom_classes = {}, typecase } = {}) => {
+  const { sets = {}, subsets = {}, properties = {} } = filters
 
-  const filtered_sets = filter_object(base_sets, sets, { is_base_object: true })
+  const filtered_sets = filter_object(base_sets, sets, {
+    is_base_object: true,
+  })
   const filtered_subsets = filter_object(filtered_sets, subsets)
-  const filtered_props = filter_object(filtered_subsets, props)
+  const filtered_properties = filter_object(filtered_subsets, properties)
   const filtered_classes = {
-    ...assign_values(filtered_props),
+    ...assign_values(filtered_properties),
     ...custom_classes,
   }
 
-  const dash_case = typecase === 'dash'
-  const camel_case = typecase === 'camel'
-
-  classes = from_entries(
+  const classes = from_entries(
     entries(filtered_classes).map(([key, value]) => {
       const formatted_key = format_key_to_case(typecase, key)
       return [formatted_key, value]
@@ -61,11 +59,16 @@ export const atomify = ({ filters = {}, typecase, custom_classes } = {}) => {
     }),
   )
 
+  _typecase = typecase
+  _filtered_sets = filtered_sets
+  _custom_classes = custom_classes || {}
+  _classes = classes
+
   return classes
 }
 
 export const flagify = () => {
-  const flags = Object.keys(classes)
+  const flags = Object.keys(_classes)
 
   try {
     const dallas = require('dallas')
