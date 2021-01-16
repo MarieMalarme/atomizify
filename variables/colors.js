@@ -40,10 +40,12 @@ const tints = [
   'cherry',
 ]
 
+const shades_amount = 9
+
 const camaieu = (name, hue) =>
-  array(9).map((i) => [
+  array(shades_amount).map(i => [
     `${name}${i + 1}`,
-    `hsl(${hue}, ${name === 'grey' ? '0' : '100'}%, ${(i + 1) * 10}%)`,
+    `hsl(${hue}, ${name === 'grey' ? '0' : '100'}%, ${(shades_amount - i) * 10}%)`,
   ])
 
 const shades = Object.fromEntries(
@@ -51,9 +53,9 @@ const shades = Object.fromEntries(
 )
 
 export const colors = Object.entries({
+  ...shades,
   white: '#ffffff',
   black: '#000000',
-  ...shades,
 })
 
 export const colors_variables = colors.map(
