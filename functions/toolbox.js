@@ -44,3 +44,13 @@ export const filter_object = (object, filters, { is_base_object } = false) => {
     ),
   )
 }
+
+export const format_key_to_case = (typecase, key) => {
+  const dash_case = typecase === 'dash'
+  const camel_case = typecase === 'camel'
+  return (
+    (dash_case && key) ||
+    (camel_case && dash_to_camel(key)) ||
+    dash_to_snake(key)
+  )
+}

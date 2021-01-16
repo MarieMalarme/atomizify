@@ -1,4 +1,5 @@
 import {
+  format_key_to_case,
   filter_object,
   assign_values,
   assign_map,
@@ -36,10 +37,7 @@ export const atomify = ({ filters = {}, typecase, custom_classes } = {}) => {
 
   classes = from_entries(
     entries(filtered_classes).map(([key, value]) => {
-      const formatted_key =
-        (dash_case && key) ||
-        (camel_case && dash_to_camel(key)) ||
-        dash_to_snake(key)
+      const formatted_key = format_key_to_case(typecase, key)
       return [formatted_key, value]
     }),
   )
