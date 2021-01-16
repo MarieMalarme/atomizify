@@ -76,7 +76,12 @@ export const flagify = () => {
       return wrapper({ consume: true })
     }
 
-    const flags_to_object = assign_map(flags, (flag) => ({ [flag]: flag }))
+    const flags_to_object = assign_map(flags, flag => {
+      const flag_name = flag.split(':')[0]
+      return {
+        [flag_name]: flag_name,
+      }
+    })
 
     const Component = wrapper({ ...flags_to_object, consume: true })
     const Div = Component.div()
