@@ -45,13 +45,7 @@ export const interaction_values = {
     'zoom-in',
     'zoom-out',
   ],
+  pointer_events: ['auto', 'all', 'none', 'visible', 'painted', 'fill', 'stroke'],
   resize: ['none', 'both', 'horizontal', 'vertical', 'block', 'inline'],
-  touch_action: [
-    'none',
-    'auto',
-    'pan-x',
-    'pan-y',
-    'manipulation',
-    'pinch-zoom',
-  ],
+  touch_action: ['none', 'auto', 'pan-x', 'pan-y', 'manipulation', 'pinch-zoom'],
 }
