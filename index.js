@@ -1,40 +1,25 @@
 import {
   format_key_to_case,
-  filter_object,
-  assign_values,
+  flatten_classes,
+  filter_objects,
   assign_map,
-  dash_to_snake,
-  dash_to_camel,
   from_entries,
   entries,
 } from './functions/toolbox.js'
 
 import { pixels_variables, percentages_variables } from './variables/measures.js'
-import { colors, colors_variables } from './variables/colors.js'
-import { base_sets } from './properties/sets.js'
+import { colors_variables } from './variables/colors.js'
+import { sets } from './properties/sets.js'
 
 import { no_flags, dallas_missing } from './messages.js'
 
-let _classes = {}
-let _custom_classes = {}
-let _filtered_sets = {}
-let _typecase
 
 export const atomify = ({ filters = {}, custom_classes = {}, typecase } = {}) => {
-  const { sets = {}, subsets = {}, properties = {} } = filters
+  const filtered_sets = filter_objects(sets, filters)
+  const flattened_classes = flatten_classes({ ...filtered_sets, ...custom_classes })
 
-  const filtered_sets = filter_object(base_sets, sets, {
-    is_base_object: true,
-  })
-  const filtered_subsets = filter_object(filtered_sets, subsets)
-  const filtered_properties = filter_object(filtered_subsets, properties)
-  const filtered_classes = {
-    ...assign_values(filtered_properties),
-    ...custom_classes,
-  }
-
-  const classes = from_entries(
-    entries(filtered_classes).map(([key, value]) => {
+  _classes = from_entries(
+    entries(flattened_classes).map(([key, value]) => {
       const formatted_key = format_key_to_case(typecase, key)
       return [formatted_key, value]
     }),
@@ -52,7 +37,7 @@ export const atomify = ({ filters = {}, custom_classes = {}, typecase } = {}) =>
         '/* colors */',
         colors_variables.join('\n'),
         '}\n',
-        entries(classes)
+        entries(_classes)
           .map(([selector, rules]) => `.${selector} { ${rules}; }`)
           .join('\n'),
       ].join('\n'),
@@ -61,10 +46,9 @@ export const atomify = ({ filters = {}, custom_classes = {}, typecase } = {}) =>
 
   _typecase = typecase
   _filtered_sets = filtered_sets
-  _custom_classes = custom_classes || {}
-  _classes = classes
+  _custom_classes = custom_classes
 
-  return classes
+  return _classes
 }
 
 export const flagify = () => {
@@ -96,3 +80,8 @@ export const flagify = () => {
     console.log(error)
   }
 }
+
+export let _classes = {}
+export let _custom_classes = {}
+export let _filtered_sets = {}
+export let _typecase
