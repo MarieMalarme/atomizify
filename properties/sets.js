@@ -1,4 +1,4 @@
-import { assign } from '../functions/toolbox.js'
+import { entries, from_entries } from '../functions/toolbox.js'
 
 import { dimensions } from './layout/dimensions.js'
 import { displaying } from './layout/displaying.js'
@@ -17,29 +17,24 @@ import { animation } from './interaction/animation.js'
 import { events } from './interaction/events.js'
 import { hover } from './interaction/hover.js'
 
-const layout = assign({
-  dimensions,
-  displaying,
-  flexbox,
-  spacing,
-  positioning,
+const base_sets = {
+  layout: { dimensions, displaying, flexbox, spacing, positioning },
+  theming: { skinning, background, border },
+  text: { font, paragraph },
+  interaction: { animation, events, hover },
+}
+
+const assign_set_types = subsets => ({
+  ...from_entries(
+    entries(subsets).map(([key, properties]) => {
+      return [key, { ...properties, _type: 'subset' }]
+    }),
+  ),
+  _type: 'set',
 })
 
-const theming = assign({
-  skinning,
-  background,
-  border,
-})
-
-const text = assign({
-  font,
-  paragraph,
-})
-
-const interaction = assign({
-  animation,
-  events,
-  hover,
-})
-
-export const base_sets = assign({ layout, theming, text, interaction })
+export const sets = from_entries(
+  entries(base_sets).map(([key, subsets]) => {
+    return [key, assign_set_types(subsets)]
+  }),
+)
