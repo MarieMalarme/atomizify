@@ -13,8 +13,7 @@ import { sets } from './properties/sets.js'
 
 import { no_flags, dallas_missing } from './messages.js'
 
-
-export const atomify = ({ filters = {}, custom_classes = {}, typecase } = {}) => {
+export const atomizify = ({ filters = {}, custom_classes = {}, typecase } = {}) => {
   const filtered_sets = filter_objects(sets, filters)
   const flattened_classes = flatten_classes({ ...filtered_sets, ...custom_classes })
 
