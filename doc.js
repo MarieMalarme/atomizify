@@ -6,11 +6,11 @@ import { colors } from './variables/colors.js'
 export const display_colors = ({ node, circles = false, open = true } = {}) => {
   const container = node || document.body
 
-  create('colors_sheet', container)
+  const colors_sheet = create('colors_sheet', container)
   create_section_header('Generated colors', colors_sheet, 'colors_blocks_container', open)
-  create('colors_blocks_container', colors_sheet)
+  const colors_blocks_container = create('colors_blocks_container', colors_sheet)
   colors_blocks_container.classList.add(!open && 'none')
-  create('colors_blocks', colors_blocks_container)
+  const colors_blocks = create('colors_blocks', colors_blocks_container)
 
   colors.forEach(([color_name], i) => {
     const color = create('color', colors_blocks, { id: color_name })
@@ -30,9 +30,9 @@ export const display_colors = ({ node, circles = false, open = true } = {}) => {
 
 export const display_classes = ({ node, open = true, flattened = false } = {}) => {
   const container = node || document.body
-  create('classes_sheet', container)
+  const classes_sheet = create('classes_sheet', container)
   create_section_header('Generated CSS classes', classes_sheet, 'sets_container', open)
-  create('sets_container', classes_sheet)
+  const sets_container = create('sets_container', classes_sheet)
   sets_container.classList.add(!open && 'none')
 
   if (flattened) {
