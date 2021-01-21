@@ -24,7 +24,7 @@ It provides a few options to play with it: set some filters, choose your typecas
 Choose the profile that suits you the best:
 
 - You're a ready-made lover:
-  By default, `atomizify` offers thousands of predefined classes.
+  by default, `atomizify` offers thousands of predefined classes.
   Just call the function, and a whole galaxy of CSS classes appears.
 
   ```js
@@ -88,10 +88,10 @@ import { flagify } from 'atomizify'
 const { Component } = flagify()
 
 // chain the 'Component' object to every CSS classes you want to apply to your element,
-// and finish by calling the type of HTML element you desire (div, span, section, input, etc.)
+// and finish by calling the type of HTML element you aim to render (div, span, section, input, etc.)
 const Title = Component.fs55.sapphire3.mb40.div()
 
-const App = () => <Title>atomizify</Title> // use your React component as pleases you
+const App = () => <Title>atomizify</Title> // then use it as any React component
 ```
 
 ## How to document it ?
@@ -105,7 +105,7 @@ Import & call the desired function(s) in your file:
 ```js
 import { display_classes } from 'atomizify/doc'
 
-// the 'display_colors' function can be called without argument
+// the 'display_classes' function can be called without argument
 // it also accepts the following options, passed in an object: 'node', 'open', 'flattened'
 
 display_classes({
