@@ -5,8 +5,10 @@ import { colors } from './variables/colors.js'
 
 export const display_colors = ({ node, circles = false, open = true } = {}) => {
   const container = node || document.body
+  remove_if_already_exists('colors_sheet')
 
   const colors_sheet = create('colors_sheet', container)
+  colors_sheet.title = 'atomizify_colors'
   create_section_header('Generated colors', colors_sheet, 'colors_blocks_container', open)
   const colors_blocks_container = create('colors_blocks_container', colors_sheet)
   colors_blocks_container.classList.add(!open && 'none')
@@ -30,7 +32,10 @@ export const display_colors = ({ node, circles = false, open = true } = {}) => {
 
 export const display_classes = ({ node, open = true, flattened = false } = {}) => {
   const container = node || document.body
+  remove_if_already_exists('classes_sheet')
+
   const classes_sheet = create('classes_sheet', container)
+  classes_sheet.title = 'atomizify_classes'
   create_section_header('Generated CSS classes', classes_sheet, 'sets_container', open)
   const sets_container = create('sets_container', classes_sheet)
   sets_container.classList.add(!open && 'none')
@@ -161,6 +166,11 @@ const create_custom_classes_set = sets_container => {
 
 const create_type_label = (text, container, name) => {
   create('type_span', container, { text, id: name, type: 'span' })
+}
+
+const remove_if_already_exists = id => {
+  const node = document.getElementById(id)
+  node && node.remove()
 }
 
 const get_collapser_sign = open => (open ? '-' : '+')
