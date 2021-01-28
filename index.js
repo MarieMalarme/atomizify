@@ -11,7 +11,7 @@ import { pixels_variables, percentages_variables } from './variables/measures.js
 import { colors_variables } from './variables/colors.js'
 import { sets } from './properties/sets.js'
 
-import { no_flags, dallas_missing } from './messages.js'
+import { no_flags, dallas_missing } from './variables/messages.js'
 
 export const atomizify = ({ filters = {}, custom_classes = {}, typecase } = {}) => {
   const filtered_sets = filter_objects(sets, filters)
