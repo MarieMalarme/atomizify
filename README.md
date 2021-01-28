@@ -115,7 +115,7 @@ display_classes({
 })
 ```
 
-![](https://raw.githubusercontent.com/MarieMalarme/atomizify/master/doc-generated_classes.jpg)
+![](https://raw.githubusercontent.com/MarieMalarme/visuals/master/atomizify/doc-generated_classes.jpg)
 
 - If you'd like to display a chart of the generated colors, suit yourself:
 
@@ -132,6 +132,6 @@ display_colors({
 })
 ```
 
-![](https://raw.githubusercontent.com/MarieMalarme/atomizify/master/doc-generated_colors.jpg)
+![](https://raw.githubusercontent.com/MarieMalarme/visuals/master/atomizify/doc-generated_colors.jpg)
 
 And voilà!
