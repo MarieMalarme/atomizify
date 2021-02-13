@@ -1,6 +1,6 @@
 {
   "name": "atomizify",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A JavaScript library generating atomic CSS classes and variables",
   "main": "index.js",
   "module": "index.js",
