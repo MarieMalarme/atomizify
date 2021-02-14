@@ -10,6 +10,10 @@ export const hover = {
     [`hover-bg-${color}:hover`]: `background-color: var(--${color})`,
   })),
 
+  hover_b_color: assign_map(colors, ([color]) => ({
+    [`hover-b-${color}:hover`]: `border-color: var(--${color})`,
+  })),
+
   hover_opacity: assign_map(11, i => ({
     [`hover-o${i * 10}:hover`]: `opacity: ${i / 10}`,
   })),
