@@ -9,6 +9,7 @@ export const interaction_values = {
     'width',
     'height',
     'transform',
+    'filter',
   ],
   overflow: ['visible', 'hidden', 'clip', 'scroll', 'auto'],
   overflow_wrap: ['normal', 'break-word', 'anywhere'],
