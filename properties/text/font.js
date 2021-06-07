@@ -37,7 +37,7 @@ export const font = {
 
   font_weight: {
     ...assign_map(9, (i) => ({
-      [`fw-${(i + 1) * 100}`]: `font-weight: ${i + 1}00`,
+      [`fw${(i + 1) * 100}`]: `font-weight: ${i + 1}00`,
     })),
     ...assign_map(font_weight, (value) => ({
       [`fw-${value}`]: `font-weight: ${value}`,
