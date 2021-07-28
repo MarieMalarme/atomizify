@@ -10,6 +10,7 @@ export const interaction_values = {
     'height',
     'transform',
     'filter',
+    'font-size',
   ],
   overflow: ['visible', 'hidden', 'clip', 'scroll', 'auto'],
   overflow_wrap: ['normal', 'break-word', 'anywhere'],
